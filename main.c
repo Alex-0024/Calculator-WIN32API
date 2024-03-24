@@ -53,13 +53,13 @@ BOOL flagDivideZero = FALSE;
 
 LRESULT WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 void ShowOutputScreen();
-typedef float (*TFunc)(float, float);
-float funcPlus(float a, float b);
-float funcMinus(float a, float b);
-float funcDivision(float a, float b);
-float funcMulti(float a, float b);
+typedef double (*TFunc)(double, double);
+double funcPlus(double a, double b);
+double funcMinus(double a, double b);
+double funcDivision(double a, double b);
+double funcMulti(double a, double b);
 TFunc Func[4] = {funcPlus, funcMinus, funcDivision, funcMulti};
-float funcMath(float num1, float num2, TFunc fn);
+double funcMath(double num1, double num2, TFunc fn);
 void ShowMasNum();
 void CalcAndShow();
 
@@ -293,17 +293,17 @@ void ShowOutputScreen()
     memset(strOutputScreen, 0, sizeof(strOutputScreen));
 }
 
-float funcPlus(float a, float b)
+double funcPlus(double a, double b)
 {
     return a + b;
 }
 
-float funcMinus(float a, float b)
+double funcMinus(double a, double b)
 {
     return a - b;
 }
 
-float funcDivision(float a, float b)
+double funcDivision(double a, double b)
 {
     if(b != 0)
         return a / b;
@@ -314,12 +314,12 @@ float funcDivision(float a, float b)
     }
 }
 
-float funcMulti(float a, float b)
+double funcMulti(double a, double b)
 {
     return a * b;
 }
 
-float funcMath(float num1, float num2, TFunc fn)
+double funcMath(double num1, double num2, TFunc fn)
 {
     return fn(num1, num2);
 }
@@ -349,7 +349,7 @@ void CalcAndShow()
     strcat(strInputScreen, "= ");
     strcat(strInputScreen, strNum);
     if(flagDivideZero)
-        strcat(strInputScreen, "\nyou can't divide by zero");
+        strcat(strInputScreen, "\nyou can't divide by zero / на ноль делить нельзя");
     SetWindowText(inputScreen, strInputScreen);
 }
 
