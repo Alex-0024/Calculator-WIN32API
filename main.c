@@ -26,8 +26,7 @@
 #define LITTLENUMIFKEY nIfKey(0); nIfKey(1); nIfKey(2); nIfKey(3); nIfKey(4);\
                        nIfKey(5); nIfKey(6); nIfKey(7); nIfKey(8); nIfKey(9)
 
-#define MAXNUMSIZE 200 // четные элементы для хранения чисел, нечетные для математического действия (200 это 100 математических действий подряд)
-                       // even elements for storing numbers, odd for mathematical operations (200 is 100 mathematical operations in a row)
+#define MAXNUMSIZE 200 // even elements for storing numbers, odd for mathematical operations (200 is 100 mathematical operations in a row)
 
 #define CLR_WND_BCG RGB(47,248,222)
 
@@ -190,7 +189,6 @@ LRESULT WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
             if((HWND)lParam == bt_percent && countMasNum >=2)
             {
-                /* расчет суммы элементов до элемента в котором будут указаны проценты */
                 /* calculation of the sum of elements up to the element in which percentages will be indicated */
                 if(countMasNum >= 4)
                 {
@@ -204,7 +202,6 @@ LRESULT WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                             res = funcMath(res, masNum[i+2], Func[(int)masNum[i+1]]);
                     }
                     countMasNum += 2;
-                    /* расчет вычисления по всем элементам с учетом расчета последнего элемента в процентах*/
                     /* calculation of calculations for all elements, taking into account the calculation of the last element as a percentage */
                     masNum[countMasNum] = res / 100.0 * masNum[countMasNum];
                     num = masNum[countMasNum];
@@ -217,7 +214,6 @@ LRESULT WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                 }
                 else
                 {
-                    /* расчет вычисления по всем элементам с учетам расчета последнего элемента в процентах*/
                     /* calculation of calculations for all elements, taking into account the calculation of the last element as a percentage */
                     masNum[countMasNum] = masNum[countMasNum-2] / 100.0 * masNum[countMasNum];
                     num = masNum[countMasNum];
@@ -379,7 +375,7 @@ void CalcAndShow()
     strcat(strInputScreen, "= ");
     strcat(strInputScreen, strNum);
     if(flagDivideZero)
-        strcat(strInputScreen, "\nyou can't divide by zero / на ноль делить нельзя");
+        strcat(strInputScreen, "\nyou can't divide by zero / РЅР° РЅРѕР»СЊ РґРµР»РёС‚СЊ РЅРµР»СЊР·СЏ");
     SetWindowText(inputScreen, strInputScreen);
 }
 
